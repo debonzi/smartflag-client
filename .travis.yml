@@ -1,0 +1,20 @@
+language: python
+python:
+- '2.7'
+- '3.5'
+- '3.6'
+install:
+- pip install -e .[test,ci]
+script:
+- pytest --cov=smartflags --cov-report annotate
+deploy:
+  provider: pypi
+  user: debonzi
+  password:
+    secure: vcZ4vGWx3nI1L/uz2PVZ1qDfYyrc4P7ugdXVK22SjCMPTSF1FmdI+41wkCFfQqRo3lqV/QIzJ1Bd7TFDx3Tl5rLi4yGEN+HdFJNta/oPoOBlro9dqp56AYMdej/vLLJaQ/J+IOcH2QrtpFWVUgit4+0lnFXx7W2pSPtGOhZySStCMVpjCb8dKGz6GTd14mOXpaWWm61/D1c13O7TrOvG/guTSXKxd+KZXtlFrjRAqKVlRXT2Ja3I70kZTLT58AJMlocERFKddnlQz2lRNXh66bH8oPh7JXVdBk+hSOIRxbzrl0s14CeI0tZsPU8EQiv8xJeoNDVAWpXo7AYuq4N0W7juV8aIrOwhMImWt1Y2YupNb4jECP+EK42AesF3hNqdGXyC4A+DKV79RMrflGh6GYHspGVkinXg+nwu4XqdW8yVOykh8GR56SaHwfwgwAe3YNeYvW8cGZmUEiMFZEF/ySL4V5XIa/1E2U4N3ZFzCX/PrUvW1tsn2Q1kzocgWqlAJ6pHEVqjp+Qo1ay1ClXGYsClMAszDFTjXpGAo/nRtEb6l6R9pwE1TMGQEa8g9AeDE2PrY1IQspnxwPoXT63I+8LQ5SScOAlIOoPbm6CqbNYWZOZIjEiPECU/RWFWJl0zY9Xn6A+bAQV+sRbPel7NyC6gUglPFM1Q2l4dkINwyII=
+  on:
+    tags: true
+    branch: master
+    python: '3.6'
+after_success:
+- coveralls
