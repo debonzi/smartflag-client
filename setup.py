@@ -2,7 +2,7 @@
 from setuptools import setup
 
 requires = [
-    'requests==2.18.4',
+    'requests==2.20.0',
 ]
 
 extras_require = {
